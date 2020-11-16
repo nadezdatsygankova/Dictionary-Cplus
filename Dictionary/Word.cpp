@@ -55,7 +55,13 @@ bool operator< (const Word& word1, const Word& word2)
    return (word1.word < word2.word);
 }
 
-bool operator== (const Word& word1, const Word& word2)
+bool operator== (const Word& word1, const std::string& word2)
 {
-   return (word1.word == word2.word);
+   return (word1.word == word2);
+}
+
+ostream& operator << (ostream& os, const Word& w)
+{
+   os <<"\n"<<"The word is "<< w.getWord() << ". \n" <<"Meaning of " << w.getWord() <<" in English " << w.getMeaning() << "\nSynonyms: " << w.getSynonym() << " \nAntonyms: " << w.getAntonym() << "\nExample: " << w.getExample_sentence() <<"\n\n"<< std::endl;
+   return os;
 }
