@@ -1,0 +1,2 @@
+Program # 2
+Write a program to implement English Dictionary that contains data members as word, meaning, synonym, antonym and example_sentence. Use an appropriate STL container and apply the relevant algorithms to maintain the sense of Dictionary.

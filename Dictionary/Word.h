@@ -1,6 +1,6 @@
 #pragma once
 #include<iostream>
-
+using namespace std;
 class Word
 {
 private:
@@ -21,6 +21,6 @@ public:
    std::string getExample_sentence() const;
 
    friend bool operator< (const Word& word1, const Word& word2);
-   friend bool operator== (const Word& word1, const Word& word2);
-
+   friend bool operator== (const Word& word1, const std::string& word2);
+   friend ostream& operator << (ostream& os, const Word& w);
 };
