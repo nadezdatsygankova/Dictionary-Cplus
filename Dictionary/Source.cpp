@@ -1,5 +1,7 @@
 /*
-
+Assignment
+PartA
+Programm#2
 Nadezda Tsygankova
 */
 
@@ -16,7 +18,6 @@ using namespace std;
 
 void AddNewWord(vector<Word>* dictionary);
 void PrintWords(vector<Word>& dictionary);
-//void PrintWord(vector<Word>& dictionary,std::string key);
 void SortWord(vector<Word>& dictionary);
 void findWord(vector<Word>& dictionary, std::string key);
 void PrintMenu();
@@ -25,8 +26,7 @@ int main()
 {
    vector<Word> dictionary;
    int choose;
-   std::string search="";
- //  std::string searchWord="";
+   std::string search = "";
    do {
       PrintMenu();
       std::cin >> choose;
@@ -43,9 +43,8 @@ int main()
       case 3:
          std::cout << "What word do you want to find? Enter: ";
          std::cin.ignore(32767, '\n');
-          std::getline(std::cin, search);
-          findWord(dictionary, search);
-        // std::cout << searchWord;
+         std::getline(std::cin, search);
+         findWord(dictionary, search);
          break;
       case 4:
          std::cout << "Thank you, have a great day";
@@ -89,12 +88,12 @@ void AddNewWord(vector<Word>* dictionary)
 
 void PrintWords(vector<Word>& dictionary)
 {
-  
+
    for (const auto& Word : dictionary)
    {
       std::cout << "These word is " << Word.getWord() << "." << std::endl;
-      std::cout <<"Meaning of this word in English: "<< Word.getMeaning() << "." << std::endl;
-      std::cout << "Synonyms:  "<< Word.getSynonym() << "." << std::endl;
+      std::cout << "Meaning of this word in English: " << Word.getMeaning() << "." << std::endl;
+      std::cout << "Synonyms:  " << Word.getSynonym() << "." << std::endl;
       std::cout << "Antonyms:  " << Word.getAntonym() << "." << std::endl;
       std::cout << "Example:  " << Word.getExample_sentence() << ".\n\n" << std::endl;
    }
@@ -113,12 +112,12 @@ void PrintMenu()
 
 void findWord(vector<Word>& dictionary, std::string key)
 {
- 
+
    SortWord(dictionary);
 
    auto it = find(dictionary.begin(), dictionary.end(), key);
    if (it != dictionary.end())
-      std::cout << "Element has found. " << *it ;
+      std::cout << "Element has found. " << *it;
    else
       std::cout << "Element not found in dictionary\n";
 
