@@ -1,0 +1,31 @@
+﻿  Source.cpp
+E:\Nadezda\SENECA\C++ 2 part\Assignment\In work PartA\PartA-2\Dictionary\Source.cpp(115,21): warning C4834: discarding return value of function with 'nodiscard' attribute
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xutility(4640,1): error C2679: binary '==': no operator found which takes a right-hand operand of type 'const _Ty' (or there is no acceptable conversion)
+          with
+          [
+              _Ty=std::string
+          ]
+E:\Nadezda\SENECA\C++ 2 part\Assignment\In work PartA\PartA-2\Dictionary\Word.h(24,16): message : could be 'bool operator ==(const Word &,const Word &)' [found using argument-dependent lookup]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xutility(4640,1): message : while trying to match the argument list '(Word, const _Ty)'
+          with
+          [
+              _Ty=std::string
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xutility(4656): message : see reference to function template instantiation '_InIt std::_Find_unchecked1<_InIt,_Ty>(_InIt,const _InIt,const _Ty &,std::false_type)' being compiled
+          with
+          [
+              _InIt=Word *,
+              _Ty=std::string
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xutility(4662): message : see reference to function template instantiation '_InIt std::_Find_unchecked<Word*,_Ty>(const _InIt,const _InIt,const _Ty &)' being compiled
+          with
+          [
+              _InIt=Word *,
+              _Ty=std::string
+          ]
+E:\Nadezda\SENECA\C++ 2 part\Assignment\In work PartA\PartA-2\Dictionary\Source.cpp(111): message : see reference to function template instantiation '_InIt std::find<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,std::string>(_InIt,const _InIt,const std::basic_string<char,std::char_traits<char>,std::allocator<char>> &)' being compiled
+          with
+          [
+              _InIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Word>>>,
+              _Ty=Word
+          ]
