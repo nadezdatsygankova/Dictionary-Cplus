@@ -1,0 +1,236 @@
+/*
+Create a single linked list that contains the data (age) of your friends. Perform basic operations including insertion, deletion, searching and display. 
+The insertion operation should only allow a friend’s data to be inserted in sorted order only.
+
+*/
+
+#include <iostream>
+
+class Friend {
+private:
+   struct node {
+      int age;
+      node* next;
+   };
+   typedef struct node* nodePtr;
+   node* head;
+   node* curr;
+   node* temp;
+   int size;
+public:
+   Friend()
+   {
+      head = nullptr;
+      curr = nullptr;
+      temp = nullptr;
+      size = 0;
+   }
+   void AddFriend(int ageF)
+   {
+      node* n = new node;
+      n->next = nullptr;
+      n->age = ageF;
+      if (head != nullptr)
+      {
+         curr = head;
+         temp = nullptr;
+         // find insert location
+         while (curr != nullptr)
+         {
+            if (curr->age >= n->age)
+            {
+               break;
+            }
+            else
+               temp = curr;
+               curr = curr->next;
+         }
+
+         // insert at head
+         if (curr == head)
+         {
+            n->next = head;
+            head = n;
+         }
+         else
+         {
+            n->next = curr;
+            temp->next = n;
+         }
+
+      }
+      else //if empty list
+      {
+         head = n;
+      }
+
+      size++;
+   }
+   void deleteFriend(int delAge)
+   {
+
+      node* delPtr = nullptr;
+      temp = head;
+      curr = head;
+     
+      if (temp != nullptr && temp->age == delAge)
+      {
+         head = temp->next;
+         std::cout << "The friend with " << delAge << " was deleted";
+         delete delPtr;
+         return;
+      }
+
+
+      while (curr != nullptr && curr->age != delAge)
+      {
+         temp = curr;
+         curr = curr->next;
+      }
+
+      if (curr == nullptr)
+      {
+         std::cout << delAge << " is not in the list";
+         delete delPtr;
+         return;
+      }
+      else if (curr->next == nullptr)
+      {
+
+            delPtr = curr;
+            temp->next = nullptr;
+            delete delPtr;
+            std::cout << "The friend with " << delAge << " was deleted";
+            size--;
+
+      }
+
+      else {
+         delPtr = curr;
+         curr = curr->next;
+         temp->next = curr;
+         delete delPtr;
+         std::cout << "The friend with " << delAge << " was deleted";
+         size--;
+
+      }
+   }
+
+   bool searchFriend(int age)
+   {
+      curr = head;
+      while (curr != nullptr)
+      {
+         if (curr->age == age)
+         {
+            return true;
+         }
+         curr = curr->next;
+      }
+      return false;
+   }
+
+   void PrintList()
+   {
+      curr = head;
+      if (curr == nullptr)
+      {
+         std::cout << "Empty list\n";
+      }
+      while (curr != nullptr)
+      {
+         std::cout << curr->age << std::endl;
+         curr = curr->next;
+      }
+      
+   }
+
+
+};
+
+void menu()
+{
+   std::cout << "\nList of the age of your friends" << std::endl;
+   std::cout << "Choose the options" << std::endl;
+   std::cout << " 1. Add friend's age\n 2. Delete friend's age\n 3. Search friend's age\n 4. Display all friend's ages \n 5. Exit " << std::endl;
+
+}
+int main()
+{
+   Friend b;
+   int age, aged, agef;
+   int option;
+   do
+   {
+      menu();
+      std::cin >> option;
+      switch (option)
+      {
+
+
+      case 1: 
+         do {
+         std::cout << "Enter a friend's age(0-120): " << std::endl;
+            std::cin >> age;
+            
+            if (age < 0 || age > 120)
+            {
+               std::cout << "Invalid input" << std::endl;
+            }
+            else
+            {
+               b.AddFriend(age);
+            }
+         } while (age < 0 || age > 120);
+         break;
+      case 2:
+         std::cout << "Enter a friend's age(0-120) which do you want to delete: " << std::endl;
+         do {
+            std::cin >> aged;
+            if (aged < 0 || aged > 120)
+            {
+               std::cout << "Invalid input" << std::endl;
+            }
+            else
+            {
+               b.deleteFriend(aged);
+            }
+           
+         } while (aged < 0 || aged > 120);
+         break;
+      case 3:
+         std::cout << "Enter a friend's age(0-120) which do you want to find: " << std::endl;
+         do {
+            std::cin >> agef;
+            if (agef < 0 || agef > 120)
+            {
+               std::cout << "Invalid input" << std::endl;
+            }
+            else
+            {
+               if (b.searchFriend(agef))
+               {
+                  std::cout << "This friend of this age " << agef << " is on the list" << std::endl;
+               }
+               else
+               {
+                  std::cout << "This friend of this age " << agef << " is not on the list" << std::endl;
+               }
+            }
+         } while (agef < 0 || agef > 120);
+         break;
+      case 4:
+         std::cout << "All frind's ages:\n";
+         b.PrintList();
+         break;
+      case 5:
+         std::cout << "Thank you for using the program" << std::endl;
+         break;
+      default:
+         break;
+      }
+
+   } while (option != 5);
+
+   return 0;
+}
